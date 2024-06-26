@@ -37,28 +37,33 @@
             };
             
             // Make POST request to webhook URL
-            fetch('https://cloud.automatisch.io/webhooks/flows/55dbfcf7-eb74-4a64-9805-018be817b156', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json(); // assuming the response is JSON
-            })
-            .then(data => {
-                console.log('Webhook response:', data);
-                alert('Webhook sent successfully!');
-            })
-            .catch(error => {
-                console.error('Error sending webhook:', error);
-                alert('Failed to send webhook. Please check your network connection and try again.');
-            });
-        }
+            function sendWebhook() {
+    var userId = 'your_user_id'; // Replace with the actual user_id
+
+    // Prepare data to send in POST request
+    var data = {
+        user_id: userId
+    };
+
+    // Make POST request to webhook URL
+    fetch('https://cloud.automatisch.io/webhooks/flows/55dbfcf7-eb74-4a64-9805-018be817b156', {
+        method: 'POST',
+        mode: 'no-cors', // Use 'no-cors' mode
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        console.log('Webhook sent successfully.');
+        alert('Webhook sent successfully!');
+    })
+    .catch(error => {
+        console.error('Error sending webhook:', error);
+        alert('Failed to send webhook. Please check your network connection and try again.');
+    });
+}
+
     </script>
 </body>
 </html>
