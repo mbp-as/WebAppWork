@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Send Webhook POST Request</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Send Webhook</title>
     <style>
         body {
             display: flex;
@@ -12,51 +12,50 @@
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0; /* фоновий колір сторінки */
         }
         button {
-            padding: 10px 20px;
-            font-size: 16px;
+            padding: 15px 30px;
+            font-size: 18px;
             cursor: pointer;
-            background-color: #4CAF50; /* зелений колір фону кнопки */
-            color: white; /* білий колір тексту кнопки */
-            border: none;
-            outline: none;
-            width: 95%;
-            max-width: 300px; /* максимальна ширина кнопки */
         }
     </style>
 </head>
 <body>
-    <button id="sendWebhookButton">Send Webhook POST Request</button>
-
+    <button onclick="sendWebhook()">Send Webhook</button>
+    
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
-        document.getElementById('sendWebhookButton').addEventListener('click', function() {
-            const userId = Telegram.WebApp.initDataUnsafe.user.id;
-            const webhookUrl = 'https://cloud.automatisch.io/webhooks/flows/a2857c6f-4757-4c43-bd8f-4f06bc916c00'; // Замініть це на вашу веб-хук URL
-
-            const postData = {
-                user_id: userId,
-                id: 'hello',
-                msg: 'hi my baby'
+        Telegram.WebApp.ready();
+        Telegram.WebApp.expand();
+        
+        function sendWebhook() {
+            var userId = 'your_user_id'; // Replace with the actual user_id
+            
+            // Prepare data to send in POST request
+            var data = {
+                user_id: userId
             };
-
-            fetch(webhookUrl, {
+            
+            // Make POST request to webhook URL
+            fetch('https://cloud.automatisch.io/webhooks/flows/55dbfcf7-eb74-4a64-9805-018be817b156', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(postData)
-            }).then(response => {
+                body: JSON.stringify(data)
+            })
+            .then(response => {
                 if (response.ok) {
-                    alert('POST request successfully sent to webhook.');
+                    alert('Webhook sent successfully!');
                 } else {
-                    alert('Failed to send POST request to webhook.');
+                    alert('Failed to send webhook.');
                 }
-            }).catch(error => {
-                alert('Error sending POST request: ' + error);
+            })
+            .catch(error => {
+                console.error('Error sending webhook:', error);
+                alert('Error sending webhook. Please try again later.');
             });
-        });
+        }
     </script>
 </body>
 </html>
