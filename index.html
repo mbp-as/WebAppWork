@@ -7,29 +7,29 @@
     <style>
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
         }
-        button {
+        .button {
             width: 95%;
-            height: 95%;
+            height: 47.5%;
             font-size: 24px;
             background-color: #007BFF;
             color: white;
             border: none;
             border-radius: 10px;
+            margin: 2.5% 0;
             cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <button>Привіт</button>
+    <button class="button">Привіт 1</button>
+    <button class="button">Привіт 2</button>
     
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
