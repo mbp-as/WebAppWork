@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Send Webhook</title>
+    <title>Hello World</title>
     <style>
         body {
             display: flex;
@@ -12,58 +12,30 @@
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
         }
         button {
-            padding: 15px 30px;
-            font-size: 18px;
+            width: 95%;
+            height: 95%;
+            font-size: 24px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 10px;
             cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <button onclick="sendWebhook()">Send Webhook</button>
+    <button>Привіт</button>
     
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
         Telegram.WebApp.ready();
         Telegram.WebApp.expand();
-        
-        function sendWebhook() {
-            var userId = 'your_user_id'; // Replace with the actual user_id
-            
-            // Prepare data to send in POST request
-            var data = {
-                user_id: userId
-            };
-            
-            // Make POST request to webhook URL
-            function sendWebhook() {
-    var userId = 'your_user_id'; // Replace with the actual user_id
-
-    // Prepare data to send in POST request
-    var data = {
-        user_id: userId
-    };
-
-    // Make POST request to webhook URL
-    fetch('https://cloud.automatisch.io/webhooks/flows/55dbfcf7-eb74-4a64-9805-018be817b156', {
-        method: 'POST',
-        mode: 'no-cors', // Use 'no-cors' mode
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => {
-        console.log('Webhook sent successfully.');
-        alert('Webhook sent successfully!');
-    })
-    .catch(error => {
-        console.error('Error sending webhook:', error);
-        alert('Failed to send webhook. Please check your network connection and try again.');
-    });
-}
-
     </script>
 </body>
 </html>
